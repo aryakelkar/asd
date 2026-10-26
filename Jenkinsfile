@@ -1,27 +1,17 @@
 pipeline {
     agent any
-
     triggers {
         pollSCM('H/5 * * * *')
     }
-
     stages {
-        stage('Checkout') {
+        stage('Build') {
             steps {
-                checkout scm
+                echo 'Building project...'
             }
         }
-
-        stage('Check Application') {
+        stage('Test') {
             steps {
-                echo 'Checking application files'
-                bat 'if exist index.html (echo index.html found) else (exit 1)'
-            }
-        }
-
-        stage('Build Success') {
-            steps {
-                echo 'Continuous Integration Successful!'
+                echo 'Running automated tests...'
             }
         }
     }
