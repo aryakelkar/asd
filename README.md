@@ -204,3 +204,17 @@ Software development and testing.
 Microservices architecture.
 Continuous Integration and Continuous Deployment (CI/CD).
 Cloud application development.
+
+
+
+# jira aws git
+create epic story in jira
+copy link address of epic paste it in git while commiting changes
+also create commit for same
+
+theory:
+Jira is a project management tool used to plan, track, and manage software development tasks. It allows users to create issues, assign tasks to team members, track progress, and manage bugs.
+GitHub is a cloud-based platform used to store and manage source code using Git, a version control system.
+Jira can be integrated with GitHub to connect development tasks with code changes. Developers can mention Jira issue IDs in commit messages and pull requests to link their code changes with the corresponding tasks.
+AWS stands for Amazon Web Services. It is a cloud computing platform that provides services such as computing power, storage, databases, networking, and application deployment.
+AWS allows developers to build, test, store, and deploy applications using cloud infrastructure.
