@@ -312,3 +312,173 @@ Supports task dependencies and retries.
 Uses Python for workflow development.
 Helps manage complex data pipelines.
 
+### Requirements
+- Docker Desktop installed and running on Windows, with WSL integration enabled if using Ubuntu/WSL
+- Docker available in the terminal
+
+ Steps
+
+1. Check Docker:
+   bash
+   docker --version
+   docker run --rm hello-world
+2. Create the Airflow DAG folder:
+   bash
+   mkdir -p ~/practical9_airflow/dags
+   cd ~/practical9_airflow
+3. Create the Python DAG file:
+   bash
+   nano dags/datetime_wednesday_dag.py
+4. Paste the code:
+
+   ```python
+   from datetime import datetime, timedelta
+
+   from airflow import DAG
+   from airflow.operators.python import PythonOperator
+
+
+   def show_datetime():
+       print("Current Date and Time:", datetime.now())
+
+
+   default_args = {
+       "owner": "airflow",
+       "retries": 1,
+       "retry_delay": timedelta(minutes=5),
+   }
+
+
+   with DAG(
+       dag_id="wednesday_datetime_display",
+       default_args=default_args,
+       start_date=datetime(2026, 1, 1),
+       schedule="30 9 * * 3",
+       catchup=False,
+   ) as dag:
+       task = PythonOperator(
+           task_id="display_datetime_task",
+           python_callable=show_datetime,
+       )
+   ```
+
+5. Save the file and start Airflow in Docker:
+   bash
+   docker run -d \
+   name airflow-standalone \
+     -p 8085:8080 \
+     -v "${PWD}/dags:/opt/airflow/dags" \
+     apache/airflow:2.9.2 \
+     airflow standalone
+6. Get the generated login credentials from the container logs:
+   ```bash
+   docker logs airflow-standalone
+   ```
+7. Open this URL in your browser:
+   `http://localhost:8085`
+   Sign in using the credentials shown in the logs. Find `wednesday_datetime_display`, enable it if needed, and trigger it manually.
+8. To test the task from the terminal:
+   ```bash
+   docker exec -it airflow-standalone \
+     airflow tasks test \
+     wednesday_datetime_display \
+     display_datetime_task \
+     2026-10-28
+   ```
+**Expected result:** The task runs and logs the current date and time.
+
+**Schedule:** `30 9 * * 3` means every Wednesday at 9:30 AM, using the Airflow environment's configured timezone.
+
+
+## Practical 2: Ansible — Localhost Configuration Automation
+
+### Requirements
+- Windows Subsystem for Linux (WSL) with Ubuntu, or an Ubuntu system
+- Internet connection for package installation
+
+### Steps
+1. In Windows PowerShell, check WSL:
+   ```powershell
+   wsl --status
+   wsl --list --verbose
+   ```
+2. If Ubuntu is not installed, run this in PowerShell:
+   ```powershell
+   wsl --install -d Ubuntu
+   ``
+   Restart if prompted, then open Ubuntu and create a Linux username and password.
+3. In the Ubuntu terminal, install Ansible:
+   ```bash
+   sudo apt update
+   sudo apt install -y ansible
+   ansible --version
+   ```
+4. Create the working folder and inventory:
+   ```bash
+   mkdir -p ~/ansible_practical5
+   cd ~/ansible_practical5
+   cat << 'EOF' > inventory.ini
+   [local]
+   localhost ansible_connection=local
+   EOF
+   ```
+5. Create the playbook:
+   ```bash
+   nano playbook.yml
+   ```
+6. Paste the following YAML code. Keep the indentation exactly as shown.
+
+   ```yaml
+   ---
+   - name: Ansible Localhost Configuration Automation
+     hosts: localhost
+     connection: local
+     gather_facts: yes
+
+     tasks:
+       - name: Display system information
+         ansible.builtin.debug:
+           msg: "OS is {{ ansible_distribution }} {{ ansible_distribution_version }} on {{ ansible_architecture }}"
+
+       - name: Create deployment directory
+         ansible.builtin.file:
+           path: /tmp/ansible_deployment
+           state: directory
+           mode: '0755'
+
+       - name: Create deployment metadata file
+         ansible.builtin.copy:
+           dest: /tmp/ansible_deployment/deploy_meta.txt
+           content: |
+             Environment=Production
+             Provisioned_Date={{ ansible_date_time.date }}
+             Provisioned_Time={{ ansible_date_time.time }}
+             Orchestrator=Ansible_Automation
+           mode: '0644'
+
+       - name: Read deployment metadata
+         ansible.builtin.command:
+           cmd: cat /tmp/ansible_deployment/deploy_meta.txt
+         register: result
+         changed_when: false
+
+       - name: Display metadata
+         ansible.builtin.debug:
+           var: result.stdout_lines
+   ```
+
+   Save using `Ctrl+O`, press Enter, and exit using `Ctrl+X`.
+7. Check syntax and run the playbook:
+   ```bash
+   ansible-playbook --syntax-check -i inventory.ini playbook.yml
+   ansible-playbook -i inventory.ini playbook.yml
+8. Verify the file:
+   ```bash
+   cat /tmp/ansible_deployment/deploy_meta.txt
+   ```
+**Expected result:** Ansible gathers system facts, creates the deployment directory and metadata file, and displays the file content. The play recap should show `failed=0`.
+
+
+
+
+
