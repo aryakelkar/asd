@@ -37,9 +37,9 @@ git pull origin main
   import json
 import boto3
 
-# Initialize the DynamoDB resource
+#Initialize the DynamoDB resource
 dynamodb = boto3.resource('dynamodb')
-# Select your DynamoDB table
+#Select your DynamoDB table
 table = dynamodb.Table('kelkar')
 
 def lambda_handler(event, context):
