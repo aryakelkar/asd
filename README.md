@@ -29,5 +29,5 @@ git commit -m "Initial commit on main branch"
  git branch -M main
  git push -u origin main
 
-# Simulate syncing updates from remote
-# git pull origin main
+Simulate syncing updates from remote
+git pull origin main
