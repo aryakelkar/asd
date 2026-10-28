@@ -91,8 +91,33 @@ Theory:
 Amazon DynamoDB: Stores registration details such as user ID, name, email, and phone number.
 AWS Lambda: Executes code in response to events without requiring server management.
 Amazon DynamoDB is a fully managed NoSQL database service provided by Amazon Web Services (AWS). It stores data in the form of key-value pairs and documents. It provides fast and flexible data access without requiring database server management.
+
+
+
+# dynamoDB date and timelog
+
+import boto3
+from datetime import datetime
+
+dynamodb = boto3.resource('dynamodb', region_name='ap-south-1')
+table = dynamodb.Table('DateTimeTable')
+
+def lambda_handler(event, context):
+    current_time = datetime.now().isoformat()
+    table.put_item(
+        Item={
+            'id': datetime.now().strftime('%Y%m%d%H%M%S%f'),
+            'datetime': current_time
+        }
+    )
+    return {
+        'statusCode': 200,
+        'body': 'Date and time stored successfully: ' + current_time
+    }
 User registration systems.
 E-commerce applications.
 Student information systems.
+
+
 Attendance management systems.
 Real-time applications and IoT systems.
