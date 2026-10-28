@@ -117,7 +117,90 @@ def lambda_handler(event, context):
 User registration systems.
 E-commerce applications.
 Student information systems.
-
-
 Attendance management systems.
 Real-time applications and IoT systems.
+
+
+
+# docker
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TechVault - Home</title>
+  <style>
+    body { font-family: sans-serif; margin: 40px; background-color: #f7f9fc; }
+    header { background: #1f2937; color: white; padding: 20px; border-radius: 8px; }
+    a { color: #2563eb; font-weight: bold; text-decoration: none; }
+    .btn { display: inline-block; padding: 10px 20px; background: #2563eb; color: white; border-radius: 5px; margin-top: 15px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>TechVault Store</h1>
+    <p>Welcome to our modern gadget store.</p>
+  </header>
+  <main>
+    <h2>Featured Collection</h2>
+    <p>Explore high-performance peripherals and accessories.</p>
+    <a class="btn" href="products.html">Browse Products &rarr;</a>
+  </main>
+</body>
+</html>
+
+
+products.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TechVault - Products</title>
+  <style>
+    body { font-family: sans-serif; margin: 40px; background-color: #f7f9fc; }
+    header { background: #1f2937; color: white; padding: 20px; border-radius: 8px; }
+    .card { background: white; padding: 15px; margin: 15px 0; border-radius: 8px; border: 1px solid #e5e7eb; width: 300px; }
+    a { color: #2563eb; font-weight: bold; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Product Catalog</h1>
+  </header>
+  <main>
+    <div class="card">
+      <h3>Wireless Mechanical Keyboard</h3>
+      <p>Price: $119</p>
+    </div>
+    <div class="card">
+      <h3>Precision Gaming Mouse</h3>
+      <p>Price: $59</p>
+    </div>
+    <a href="index.html">&larr; Return to Home</a>
+  </main>
+</body>
+</html>
+
+
+dockerfile
+FROM nginx:alpine
+COPY index.html /usr/share/nginx/html/index.html
+COPY products.html /usr/share/nginx/html/products.html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+
+
+cmd commonds
+dir
+docker build -t ecommerce-store:v1 .
+docker run -d -p 8085:80 --name ecommerce-app ecommerce-store:v1
+
+
+theory:
+Docker is an open-source platform used to develop, package, and run applications inside containers. Containers include the application code, libraries, dependencies, and configuration required to run an application.
+Docker helps applications run consistently across different environments, such as a developer's computer, testing system, and production server.
+Web application deployment.
+Software development and testing.
+Microservices architecture.
+Continuous Integration and Continuous Deployment (CI/CD).
+Cloud application development.
