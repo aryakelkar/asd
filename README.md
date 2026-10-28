@@ -40,7 +40,6 @@ dynamodb = boto3.resource('dynamodb')
 table = dynamodb.Table('kelkar')
 
 def lambda_handler(event, context):
-    # Extract data from the event object
     user_id = event.get('userID')
     name = event.get('name')
     email = event.get('email')
