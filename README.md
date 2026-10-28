@@ -306,3 +306,14 @@ terraform apply: Applies the configuration to create or modify resources.
 terraform destroy: Destroys managed infrastructure resources.
 terraform fmt: Formats configuration files.
 terraform show: Displays the current state or a saved plan.
+
+
+
+# airflow
+Automates repetitive workflows.
+Supports scheduled task execution.
+Provides a graphical interface for monitoring.
+Supports task dependencies and retries.
+Uses Python for workflow development.
+Helps manage complex data pipelines.
+
