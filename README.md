@@ -34,12 +34,9 @@ git pull origin main
 
 
 # DynamoDB
-  import json
+import json
 import boto3
-
-#Initialize the DynamoDB resource
 dynamodb = boto3.resource('dynamodb')
-#Select your DynamoDB table
 table = dynamodb.Table('kelkar')
 
 def lambda_handler(event, context):
@@ -48,8 +45,6 @@ def lambda_handler(event, context):
     name = event.get('name')
     email = event.get('email')
     phone = event.get('phone')
-
-    # Put the item into the DynamoDB table
     table.put_item(
         Item={
             'userID': user_id,
@@ -58,7 +53,6 @@ def lambda_handler(event, context):
             'phone': phone
         }
     )
-
     return {
         'statusCode': 200,
         'headers': {'Access-Control-Allow-Origin': '*'},
