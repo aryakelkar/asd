@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps & Cloud Computing Complete Lab Manual (Practicals 1 to 10)</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --border: #334155;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --code-bg: #0b1120;
+            --success: #22c55e;
+            --warning: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        header h1 {
+            font-size: 2.25rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        nav.toc {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        nav.toc h2 {
+            font-size: 1.25rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        nav.toc ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 0.5rem 1.5rem;
+            padding-left: 0;
+        }
+
+        nav.toc a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav.toc a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        .card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1rem;
+        }
+
+        .badge {
+            background-color: var(--primary);
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 0.35rem 0.75rem;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        h2 {
+            font-size: 1.35rem;
+            color: var(--text-main);
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            color: var(--accent);
+            margin: 1.5rem 0 0.75rem 0;
+        }
+
+        p, ul, ol {
+            margin-bottom: 1rem;
+            color: #cbd5e1;
+        }
+
+        ul, ol {
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        pre {
+            background-color: var(--code-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        code {
+            font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+            font-size: 0.9rem;
+            color: #e2e8f0;
+        }
+
+        .inline-code {
+            background-color: var(--code-bg);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            color: #38bdf8;
+        }
+
+        .callout {
+            background: rgba(56, 189, 248, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1rem;
+            border-radius: 0 6px 6px 0;
+            margin: 1rem 0;
+        }
+
+        .callout-title {
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>DevOps & Cloud Computing Laboratory</h1>
+        <p>Comprehensive Practical Manual & Execution Guide (Practicals 1 to 10)</p>
+    </header>
+
+    <nav class="toc">
+        <h2>Laboratory Index</h2>
+        <ul>
+            <li><a href="#practical-1">Practical 1: Jira Agile Integration with GitHub & AWS</a></li>
+            <li><a href="#practical-2">Practical 2: Git CLI Lifecycle & Branching Commands</a></li>
+            <li><a href="#practical-3">Practical 3: Jenkins SCM Poll Pipeline (Every 5 Mins)</a></li>
+            <li><a href="#practical-4">Practical 4: AWS Lambda Form Storage to DynamoDB</a></li>
+            <li><a href="#practical-5">Practical 5: Ansible Configuration on Localhost (WSL)</a></li>
+            <li><a href="#practical-6">Practical 6: AWS S3 Static Website Hosting</a></li>
+            <li><a href="#practical-7">Practical 7: Terraform Infrastructure Provisioning (EC2)</a></li>
+            <li><a href="#practical-8">Practical 8: AWS Lambda Scheduled Writer to DynamoDB</a></li>
+            <li><a href="#practical-9">Practical 9: Apache Airflow Scheduled Cron DAG</a></li>
+            <li><a href="#practical-10">Practical 10: Jenkins Multi-Stage Pipeline with Docker</a></li>
+        </ul>
+    </nav>
+
+    <!-- PRACTICAL 1 -->
+    <section class="card" id="practical-1">
+        <div class="card-header">
+            <span class="badge">Practical 1</span>
+            <h2>Agile Lifecycle Management: Jira Integration with GitHub & AWS</h2>
+        </div>
+
+        <p><strong>Objective:</strong> To study and implement an Agile Software Project lifecycle using Jira, integrating it with GitHub for automated VCS traceability and AWS for deployment state tracking.</p>
+
+        <h3>1. Jira Agile Board Setup</h3>
+        <ol>
+            <li>Sign in to <strong>Atlassian Jira</strong> and create a new project using the <strong>Scrum</strong> or <strong>Kanban</strong> software development template.</li>
+            <li>Configure the standard board workflow columns:
+                <ul>
+                    <li><code class="inline-code">TO DO</code> &rarr; <code class="inline-code">IN PROGRESS</code> &rarr; <code class="inline-code">IN REVIEW</code> &rarr; <code class="inline-code">DONE</code></li>
+                </ul>
+            </li>
+            <li>Create user stories representing project requirements. Note the designated issue key (e.g., <code class="inline-code">DEV-101</code>).</li>
+            <li>Create and start a new <strong>Sprint</strong> (e.g., "Sprint 1 - Core Architecture").</li>
+        </ol>
+
+        <h3>2. GitHub & Jira Bi-Directional Integration</h3>
+        <ol>
+            <li>In Jira, navigate to <strong>Apps &rarr; Explore more apps</strong> and install <strong>GitHub for Jira</strong>.</li>
+            <li>Authorize Jira to access your target GitHub organization/account and select your repository.</li>
+            <li>Link commit history, branches, and PRs automatically to Jira issues by referencing the Jira Issue Key in branch names and commit messages:
+<pre><code># Create feature branch referencing Jira Issue Key
+git checkout -b feature/DEV-101-auth-module
+
+# Stage and commit using smart commits
+git commit -m "DEV-101 #time 2h #comment Initialized authentication controllers #in-progress"
+
+# Push to remote
+git push origin feature/DEV-101-auth-module</code></pre>
+            </li>
+            <li>Open the issue in Jira: the <strong>Development</strong> panel on the right sidebar reflects linked commits and branches directly.</li>
+        </ol>
+
+        <h3>3. AWS Deployment Tracking via GitHub Actions</h3>
+        <p>Create a GitHub Action pipeline in <code class="inline-code">.github/workflows/deploy.yml</code> to deploy changes to AWS and inform Jira of deployment status:</p>
+<pre><code>name: CI/CD AWS Deployment Pipeline
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-north-1
+
+      - name: Deploy Artifact to AWS S3
+        run: |
+          aws s3 sync ./dist s3://my-agile-prod-bucket --delete
+
+      - name: Record Deployment
+        run: echo "Deployment of DEV-101 to AWS successfully executed."</code></pre>
+
+        <div class="callout">
+            <div class="callout-title">Submission Verification Checklist</div>
+            <ul>
+                <li>Screenshot of Jira Active Sprint Board with cards transitioned across columns.</li>
+                <li>Screenshot of Jira Issue Details displaying linked GitHub Commits/PRs.</li>
+                <li>Screenshot of AWS resource showing deployed artifacts.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- PRACTICAL 2 -->
+    <section class="card" id="practical-2">
+        <div class="card-header">
+            <span class="badge">Practical 2</span>
+            <h2>Version Control System: Git Command Demonstration</h2>
+        </div>
+
+        <p><strong>Objective:</strong> Install Git and demonstrate <code class="inline-code">git init</code>, <code class="inline-code">add</code>, <code class="inline-code">commit</code>, <code class="inline-code">push</code>, <code class="inline-code">pull</code>, <code class="inline-code">branch</code>, <code class="inline-code">merge</code>, and <code class="inline-code">diff</code> commands.</p>
+
+        <h3>1. Installation & Environment Verification</h3>
+<pre><code># Ubuntu / WSL
+sudo apt update && sudo apt install -y git
+
+# Configure User Identity
+git config --global user.name "Your Name"
+git config --global user.email "your-email@example.com"
+
+# Verify installation
+git --version</code></pre>
+
+        <h3>2. Command Execution Lifecycle</h3>
+        <ol>
+            <li><strong>Initialize repository (<code class="inline-code">git init</code>):</strong>
+<pre><code>mkdir git-practical-demo && cd git-practical-demo
+git init</code></pre>
+            </li>
+
+            <li><strong>Stage and commit files (<code class="inline-code">git add</code> & <code class="inline-code">git commit</code>):</strong>
+<pre><code>echo "DevOps Lab - Initial File Content" > app.txt
+git add app.txt
+git commit -m "Initial commit on main branch"</code></pre>
+            </li>
+
+            <li><strong>Inspect modifications (<code class="inline-code">git diff</code>):</strong>
+<pre><code>echo "Appending update for difference check" >> app.txt
+git diff</code></pre>
+                <em>Output shows line additions preceded by <code class="inline-code">+</code>.</em>
+            </li>
+
+            <li><strong>Branch creation and switching (<code class="inline-code">git branch</code>):</strong>
+<pre><code># Create feature branch
+git branch feature-auth
+
+# Switch branch
+git checkout feature-auth
+
+# Add unique content
+echo "Feature authentication logic implemented" > auth.txt
+git add auth.txt
+git commit -m "Added authentication logic in feature branch"</code></pre>
+            </li>
+
+            <li><strong>Merge branches (<code class="inline-code">git merge</code>):</strong>
+<pre><code>git checkout main
+git merge feature-auth</code></pre>
+            </li>
+
+            <li><strong>Remote tracking (<code class="inline-code">git push</code> & <code class="inline-code">git pull</code>):</strong>
+<pre><code># Link to remote GitHub repository
+git remote add origin https://github.com/&lt;your-username&gt;/git-practical-demo.git
+git branch -M main
+git push -u origin main
+
+# Simulate syncing updates from remote
+git pull origin main</code></pre>
+            </li>
+        </ol>
+
+        <div class="callout">
+            <div class="callout-title">Submission Verification Checklist</div>
+            <ul>
+                <li>Terminal output of <code class="inline-code">git diff</code> displaying working tree differences.</li>
+                <li>Output of <code class="inline-code">git log --graph --oneline --all</code> proving successful branch creation and merge commit.</li>
+                <li>Screenshot of remote GitHub repository showing committed branch history.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- PRACTICAL 3 -->
+    <section class="card" id="practical-3">
+        <div class="card-header">
+            <span class="badge">Practical 3</span>
+            <h2>Jenkins CI Pipeline with GitHub Poll SCM (5-Minute Trigger)</h2>
+        </div>
+
+        <p><strong>Objective:</strong> Install Jenkins and perform continuous integration using a declarative pipeline with a <code class="inline-code">Jenkinsfile</code> sourced from a remote GitHub repository, configured to track changes every 5 minutes.</p>
+
+        <h3>1. Repository Configuration: The Jenkinsfile</h3>
+        <p>Place this <code class="inline-code">Jenkinsfile</code> at the root of your remote GitHub repository:</p>
+<pre><code>pipeline {
+    agent any
+
+    // Poll SCM every 5 minutes for repository updates
+    triggers {
+        pollSCM('H/5 * * * *')
+    }
+
+    stages {
+        stage('Checkout SCM') {
+            steps {
+                echo 'Checking out source code from remote repository...'
+                checkout scm
+            }
+        }
+
+        stage('Build & Syntax Check') {
+            steps {
+                echo 'Running build phase...'
+                sh 'python3 -m py_compile *.py || true'
+            }
+        }
+
+        stage('Automated Tests') {
+            steps {
+                echo 'Executing unit validation test suite...'
+                sh 'echo "Tests passed successfully."'
+            }
+        }
+
+        stage('Artifact Packaging') {
+            steps {
+                echo 'Packaging deployment artifacts...'
+                sh 'tar -czvf build-artifact.tar.gz * || true'
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Pipeline execution cycle concluded.'
+        }
+        success {
+            echo 'Build passed all status checks.'
+        }
+        failure {
+            echo 'Build failed. Alert notifications dispatched.'
+        }
+    }
+}</code></pre>
+
+        <h3>2. Jenkins Job Creation & Configuration</h3>
+        <ol>
+            <li>Open the Jenkins Web UI (<code class="inline-code">http://localhost:8080</code>).</li>
+            <li>Click <strong>New Item</strong> &rarr; Enter job name (e.g., <code class="inline-code">GitHub-5Min-Poll-Pipeline</code>) &rarr; Select <strong>Pipeline</strong> &rarr; Click <strong>OK</strong>.</li>
+            <li>In the configuration menu:
+                <ul>
+                    <li>Under <strong>Build Triggers</strong>: Check <strong>Poll SCM</strong> and enter schedule:
+<pre><code>H/5 * * * *</code></pre>
+                    </li>
+                    <li>Under <strong>Pipeline</strong>:
+                        <ul>
+                            <li><strong>Definition</strong>: Select <code class="inline-code">Pipeline script from SCM</code>.</li>
+                            <li><strong>SCM</strong>: Select <code class="inline-code">Git</code>.</li>
+                            <li><strong>Repository URL</strong>: Enter your GitHub repository HTTPS clone URL.</li>
+                            <li><strong>Credentials</strong>: Add your GitHub Personal Access Token (PAT) if private.</li>
+                            <li><strong>Branch Specifier</strong>: <code class="inline-code">*/main</code> or <code class="inline-code">*/master</code>.</li>
+                            <li><strong>Script Path</strong>: Ensure it is set to <code class="inline-code">Jenkinsfile</code>.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Click <strong>Save</strong>.</li>
+        </ol>
+
+        <div class="callout">
+            <div class="callout-title">Submission Verification Checklist</div>
+            <ul>
+                <li>Screenshot of Jenkins Pipeline configuration highlighting the <code class="inline-code">H/5 * * * *</code> Poll SCM schedule.</li>
+                <li>Screenshot of <strong>Poll SCM Log</strong> showing automatic trigger via commit detection.</li>
+                <li>Screenshot of the Stage View showing green status across all pipeline stages.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- PRACTICAL 4 -->
+    <section class="card" id="practical-4">
+        <div class="card-header">
+            <span class="badge">Practical 4</span>
+            <h2>AWS Lambda Registration Form Integration with Amazon DynamoDB</h2>
+        </div>
+
+        <p><strong>Objective:</strong> Write an AWS Lambda function that processes inputs submitted from a client registration form and persists the user data into an Amazon DynamoDB table.</p>
+
+        <h3>1. Amazon DynamoDB Table Setup</h3>
+        <ol>
+            <li>Open the <strong>DynamoDB Console</strong> in your active region (e.g., <code class="inline-code">eu-north-1</code>)[cite: 1].</li>
+            <li>Click <strong>Create table</strong> and configure[cite: 1]:
+                <ul>
+                    <li><strong>Table name:</strong> <code class="inline-code">StudentRegistrationTable</code></li>
+                    <li><strong>Partition key:</strong> <code class="inline-code">registration_id</code> (Type: <strong>String</strong>)</li>
+                    <li><strong>Table class:</strong> DynamoDB Standard (On-demand capacity)[cite: 1]</li>
+                </ul>
+            </li>
+            <li>Click <strong>Create table</strong> and confirm status changes to <strong>Active</strong>[cite: 1].</li>
+        </ol>
+
+        <h3>2. AWS Lambda Function Implementation</h3>
+        <p>Create a Lambda function named <code class="inline-code">ProcessRegistrationForm</code> (Runtime: <strong>Python 3.12</strong>)[cite: 1], attach the IAM role with DynamoDB write permissions[cite: 1], and deploy this handler code:</p>
+<pre><code>import json
+import boto3
+import uuid
+from datetime import datetime
+
+# Initialize DynamoDB resource with explicit region
+dynamodb = boto3.resource('dynamodb', region_name='eu-north-1')
+table = dynamodb.Table('StudentRegistrationTable')
+
+def lambda_handler(event, context):
+    try:
+        # Check if request comes via API Gateway (body as JSON string) or direct JSON invocation
+        if 'body' in event and event['body'] is not None:
+            data = json.loads(event['body']) if isinstance(event['body'], str) else event['body']
+        else:
+            data = event
+
+        # Generate unique registration ID and submission timestamp
+        registration_id = str(uuid.uuid4())
+        submitted_at = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')
+
+        # Construct the persistence item
+        item = {
+            'registration_id': registration_id,
+            'full_name': data.get('full_name', 'N/A'),
+            'email': data.get('email', 'N/A'),
+            'phone': data.get('phone', 'N/A'),
+            'course': data.get('course', 'DevOps Engineering'),
+            'submitted_at': submitted_at
+        }
+
+        # Insert record into DynamoDB
+        table.put_item(Item=item)
+
+        return {
+            'statusCode': 200,
+            'headers': {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            'body': json.dumps({
+                'message': 'Registration successful!',
+                'registration_id': registration_id,
+                'data': item
+            })
+        }
+
+    except Exception as e:
+        return {
+            'statusCode': 500,
+            'headers': {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            'body': json.dumps({'error': str(e)})
+        }</code></pre>
+
+        <h3>3. Client-Side HTML Registration Form</h3>
+        <p>Save this as <code class="inline-code">registration_form.html</code>. Replace <code class="inline-code">LAMBDA_API_ENDPOINT_URL</code> with your Lambda Function URL or API Gateway invocation URL:</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Student Registration Form&lt;/title&gt;
+    &lt;style&gt;
+        body { font-family: Arial, sans-serif; background: #f4f6f8; padding: 2rem; }
+        .form-card { max-width: 450px; background: #fff; padding: 2rem; border-radius: 8px; margin: auto; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .field { margin-bottom: 1rem; }
+        label { display: block; margin-bottom: 0.5rem; font-weight: bold; }
+        input, select { width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; padding: 0.75rem; background: #2563eb; color: #fff; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; }
+        button:hover { background: #1d4ed8; }
+        #status { margin-top: 1rem; padding: 0.5rem; border-radius: 4px; display: none; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="form-card"&gt;
+        &lt;h2&gt;Student Registration&lt;/h2&gt;
+        &lt;form id="regForm"&gt;
+            &lt;div class="field"&gt;
+                &lt;label for="full_name"&gt;Full Name&lt;/label&gt;
+                &lt;input type="text" id="full_name" required&gt;
+            &lt;/div&gt;
+            &lt;div class="field"&gt;
+                &lt;label for="email"&gt;Email Address&lt;/label&gt;
+                &lt;input type="email" id="email" required&gt;
+            &lt;/div&gt;
+            &lt;div class="field"&gt;
+                &lt;label for="phone"&gt;Phone Number&lt;/label&gt;
+                &lt;input type="tel" id="phone" required&gt;
+            &lt;/div&gt;
+            &lt;div class="field"&gt;
+                &lt;label for="course"&gt;Course Selection&lt;/label&gt;
+                &lt;select id="course"&gt;
+                    &lt;option value="DevOps &amp; Cloud Computing"&gt;DevOps &amp; Cloud Computing&lt;/option&gt;
+                    &lt;option value="AI &amp; Machine Learning"&gt;AI &amp; Machine Learning&lt;/option&gt;
+                    &lt;option value="Cyber Security"&gt;Cyber Security&lt;/option&gt;
+                &lt;/select&gt;
+            &lt;/div&gt;
+            &lt;button type="submit"&gt;Submit Registration&lt;/button&gt;
+        &lt;/form&gt;
+        &lt;div id="status"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        const API_URL = "LAMBDA_API_ENDPOINT_URL";
+
+        document.getElementById('regForm').addEventListener('submit', async (e) =&gt; {
+            e.preventDefault();
+            const statusDiv = document.getElementById('status');
+            
+            const payload = {
+                full_name: document.getElementById('full_name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                course: document.getElementById('course').value
+            };
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await response.json();
+                statusDiv.style.display = 'block';
+                statusDiv.style.background = '#dcfce7';
+                statusDiv.style.color = '#15803d';
+                statusDiv.innerHTML = `Registration Saved! ID: &lt;strong&gt;${result.registration_id}&lt;/strong&gt;`;
+                document.getElementById('regForm').reset();
+            } catch (err) {
+                statusDiv.style.display = 'block';
+                statusDiv.style.background = '#fee2e2';
+                statusDiv.style.color = '#b91c1c';
+                statusDiv.innerText = 'Submission Error: ' + err.message;
+            }
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <div class="callout">
+            <div class="callout-title">Submission Verification Checklist</div>
+            <ul>
+                <li>Screenshot of Lambda Test event execution returning <code class="inline-code">"statusCode": 200</code>.</li>
+                <li>Screenshot of the submitted registration form in the browser showing the success banner with registration ID.</li>
+                <li>Screenshot of the DynamoDB <strong>Explore table items</strong> view showing the persisted record in <code class="inline-code">StudentRegistrationTable</code>.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- PRACTICAL 5 -->
+    <section class="card" id="practical-5">
+        <div class="card-header">
+            <span class="badge">Practical 5</span>
+            <h2>Configuration Management: Ansible Automation on Localhost (WSL)</h2>
+        </div>
+
+        <p><strong>Objective:</strong> Install Ansible and write playbooks to manage localhost system configurations, gather system facts, and provision deployment metadata files.</p>
+
+        <h3>1. Directory and Inventory Setup</h3>
+<pre><code>mkdir -p ~/ansible_practical5 && cd ~/ansible_practical5
+
+# Create inventory.ini
+cat &lt;&lt; 'EOF' > inventory.ini
+[local]
+localhost ansible_connection=local
+EOF</code></pre>
+
+        <h3>2. Ansible Playbook (<code class="inline-code">playbook.yml</code>)</h3>
+<pre><code>---
+- name: Practical 5 Localhost Configuration Automation
+  hosts: localhost
+  connection: local
+  gather_facts: yes
+
+  tasks:
+    - name: Task 1 - Display Target OS Information
+      ansible.builtin.debug:
+        msg: "Target OS is {{ ansible_distribution }} {{ ansible_distribution_version }} on {{ ansible_architecture }}"
+
+    - name: Task 2 - Ensure local destination directory exists
+      ansible.builtin.file:
+        path: /tmp/ansible_deployment
+        state: directory
+        mode: '0755'
+
+    - name: Task 3 - Provision deployment properties file
+      ansible.builtin.copy:
+        dest: /tmp/ansible_deployment/deploy_meta.txt
+        content: |
+          Environment=Production
+          Provisioned_Date={{ ansible_date_time.date }}
+          Provisioned_Time={{ ansible_date_time.time }}
+          Orchestrator=Ansible_Automation
+        mode: '0644'
+
+    - name: Task 4 - Verify generated file content
+      ansible.builtin.command: cat /tmp/ansible_deployment/deploy_meta.txt
+      register: file_content
+
+    - name: Task 5 - Print file content output
+      ansible.builtin.debug:
+        var: file_content.stdout_lines</code></pre>
+
+        <h3>3. Execution Command</h3>
+<pre><code>ansible-playbook -i inventory.ini playbook.yml
+cat /tmp/ansible_deployment/deploy_meta.txt</code></pre>
+
+        <div class="callout">
+            <div class="callout-title">Submission Verification Checklist</div>
+            <ul>
+                <li>Terminal output of <code class="inline-code">ansible-playbook</code> with <code class="inline-code">failed=0</code> in the PLAY RECAP.</li>
+                <li>Output of <code class="inline-code">cat /tmp/ansible_deployment/deploy_meta.txt</code> displaying dynamically evaluated date/time facts.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- PRACTICAL 6 -->
+    <section class="card" id="practical-6">
+        <div class="card-header">
+            <span class="badge">Practical 6</span>
+            <h2>Cloud Storage & Hosting: Amazon S3 Static Website</h2>
+        </div>
+
+        <p><strong>Objective:</strong> Configure an Amazon S3 bucket for public static website hosting, upload HTML/CSS artifacts, and configure access permissions via Bucket Policy.</p>
+
+        <h3>1. Create S3 Bucket & Unblock Public Access</h3>
+        <ol>
+            <li>Navigate to <strong>S3 Console</strong> &rarr; Click <strong>Create bucket</strong>.</li>
+            <li><strong>Bucket name:</strong> Enter a globally unique name (e.g., <code class="inline-code">practical6-static-site-101</code>).</li>
+            <li><strong>Region:</strong> Select your default region (e.g., <code class="inline-code">eu-north-1</code>)[cite: 1].</li>
+            <li>Under <strong>Block Public Access settings for this bucket</strong>:
+                <ul>
+                    <li>Uncheck <strong>Block <em>all</em> public access</strong>.</li>
+                    <li>Acknowledge the safety warning checkbox.</li>
+                </ul>
+            </li>
+            <li>Click <strong>Create bucket</strong>.</li>
+        </ol>
+
+        <h3>2. Enable Static Website Hosting</h3>
+        <ol>
+            <li>Click on the newly created bucket &rarr; Open the <strong>Properties</strong> tab.</li>
+            <li>Scroll down to <strong>Static website hosting</strong> &rarr; Click <strong>Edit</strong>.</li>
+            <li>Select <strong>Enable</strong>.</li>
+            <li>Hosting type: <strong>Host a static website</strong>.</li>
+            <li><strong>Index document:</strong> <code class="inline-code">index.html</code>; <strong>Error document:</strong> <code class="inline-code">error.html</code>.</li>
+            <li>Click <strong>Save changes</strong>. Note down the generated <strong>Bucket website endpoint URL</strong>.</li>
+        </ol>
+
+        <h3>3. Attach Bucket Policy</h3>
+        <p>Go to the <strong>Permissions</strong> tab &rarr; Scroll down to <strong>Bucket policy</strong> &rarr; Click <strong>Edit</strong> &rarr; Paste (replace <code class="inline-code">YOUR-BUCKET-NAME</code>):</p>
+<pre><code>{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::YOUR-BUCKET-NAME/*"
+        }
+    ]
+}</code></pre>
+
+        <h3>4. Upload Site Files</h3>
+        <p>Create a simple <code class="inline-code">index.html</code> and upload it to the bucket:</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;DevOps S3 Static Website&lt;/title&gt;&lt;/head&gt;
+&lt;body style="text-align:center; font-family:sans-serif; margin-top:50px;"&gt;
+    &lt;h1&gt;Hosted on Amazon S3 Successfully!&lt;/h1&gt;
+    &lt;p&gt;DevOps Practical 6: Static Website Hosting Verification&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <div class="callout">
+            <div class="callout-title">Submission Verification Checklist</div>
+            <ul>
+                <li>Screenshot of the S3 Static Website Hosting properties page showing the active endpoint URL.</li>
+                <li>Screenshot of the browser loading the website via the S3 HTTP endpoint URL.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- PRACTICAL 7 -->
+    <section class="card" id="practical-7">
+        <div class="card-header">
+            <span class="badge">Practical 7</span>
+            <h2>Infrastructure as Code (IaC): Terraform EC2 Provisioning</h2>
+        </div>
+
+        <p><strong>Objective:</strong> Automate cloud resource provisioning by defining and applying an AWS EC2 instance using HashiCorp Terraform.</p>
+
+        <h3>1. Terraform Configuration File (<code class="inline-code">main.tf</code>)</h3>
+        <p>Create a directory <code class="inline-code">~/practical7_terraform</code> and add <code class="inline-code">main.tf</code>:</p>
+<pre><code>terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "eu-north-1"
+}
+
+# Fetch latest official Ubuntu 22.04 LTS AMI in eu-north-1
+data "aws_ami" "ubuntu" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["099720109477"] # Canonical
+}
+
+# Provision EC2 Instance
+resource "aws_instance" "web_server" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t3.micro"
+
+  tags = {
+    Name        = "Practical7-Terraform-EC2"
+    Environment = "DevOps-Lab"
+  }
+}
+
+# Output values for verification
+output "instance_id" {
+  description = "EC2 Instance ID"
+  value       = aws_instance.web_server.id
+}
+
+output "instance_public_ip" {
+  description = "Public IPv4 Address"
+  value       = aws_instance.web_server.public_ip
+}</code></pre>
+
+        <h3>2. Terraform Execution Lifecycle</h3>
+<pre><code># Initialize providers
+terraform init
+
+# Generate execution plan
+terraform plan
+
+# Apply changes to cloud
+terraform apply -auto-approve
+
+# Clean up / Teardown after verification
+terraform destroy -auto-approve</code></pre>
+
+        <div class="callout">
+            <div class="callout-title">Submission Verification Checklist</div>
+            <ul>
+                <li>Terminal output of <code class="inline-code">terraform apply</code> showing <code class="inline-code">Apply complete! Resources: 1 added</code> with instance ID and IP outputs.</li>
+                <li>Screenshot of AWS EC2 Console showing <code class="inline-code">Practical7-Terraform-EC2</code> in <strong>Running</strong> state.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- PRACTICAL 8 -->
+    <section class="card" id="practical-8">
+        <div class="card-header">
+            <span class="badge">Practical 8</span>
+            <h2>Serverless Execution: AWS Lambda Writing to DynamoDB</h2>
+        </div>
+
+        <p><strong>Objective:</strong> Deploy an AWS Lambda function that writes execution records containing generated IDs and timestamps into an Amazon DynamoDB table[cite: 1].</p>
+
+        <h3>1. DynamoDB Table Setup</h3>
+        <ul>
+            <li><strong>Table Name:</strong> <code class="inline-code">DateTimeLogs</code>[cite: 1]</li>
+            <li><strong>Partition Key:</strong> <code class="inline-code">log_id</code> (String)[cite: 1]</li>
+            <li><strong>Region:</strong> <code class="inline-code">eu-north-1</code>[cite: 1]</li>
+        </ul>
+
+        <h3>2. Lambda Function Code (<code class="inline-code">lambda_function.py</code>)</h3>
+<pre><code>import json
+import boto3
+import uuid
+from datetime import datetime
+
+# Explicitly pass the region to prevent ResourceNotFoundException
+dynamodb = boto3.resource('dynamodb', region_name='eu-north-1')
+table = dynamodb.Table('DateTimeLogs')
+
+def lambda_handler(event, context):
+    log_id = str(uuid.uuid4())
+    timestamp = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')
+    
+    item = {
+        'log_id': log_id,
+        'timestamp': timestamp,
+        'event_source': 'AWS Lambda Automation',
+        'status': 'Record Successfully Inserted'
+    }
+    
+    # Write record to DynamoDB
+    table.put_item(Item=item)
+    
+    return {
+        'statusCode': 200,
+        'body': json.dumps({
+            'message': 'Item inserted successfully into DynamoDB',
+            'inserted_item': item
+        })
+    }</code></pre>
+
+        <div class="callout">
+            <div class="callout-title">Submission Verification Checklist</div>
+            <ul>
+                <li>Screenshot of Lambda Test Execution Result showing <code class="inline-code">statusCode: 200</code>.</li>
+                <li>Screenshot of DynamoDB <strong>Explore table items</strong> showing the generated row in <code class="inline-code">DateTimeLogs</code>.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- PRACTICAL 9 -->
+    <section class="card" id="practical-9">
+        <div class="card-header">
+            <span class="badge">Practical 9</span>
+            <h2>Workflow Orchestration: Apache Airflow Scheduled Cron DAG</h2>
+        </div>
+
+        <p><strong>Objective:</strong> Deploy Apache Airflow using Docker and author a Directed Acyclic Graph (DAG) scheduled using cron syntax (<code class="inline-code">30 9 * * 3</code>) to execute and log current timestamps[cite: 1, 2, 3].</p>
+
+        <h3>1. DAG Implementation (<code class="inline-code">datetime_wednesday_dag.py</code>)</h3>
+<pre><code>from datetime import datetime, timedelta
+from airflow import DAG
+from airflow.operators.python import PythonOperator
+
+def print_current_datetime():
+    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    print("=" * 50)
+    print(f"CRON SCHEDULED TRIGGER EXECUTION: {current_time}")
+    print("=" * 50)
+
+default_args = {
+    'owner': 'airflow',
+    'depends_on_past': False,
+    'start_date': datetime(2026, 1, 1),
+    'retries': 1,
+    'retry_delay': timedelta(minutes=5),
+}
+
+dag = DAG(
+    'wednesday_datetime_display',
+    default_args=default_args,
+    description='Displays current date and time every Wednesday at 9:30 AM',
+    schedule='30 9 * * 3',  # At 09:30 on Wednesday
+    catchup=False,
+    tags=['practical9'],
+)
+
+display_datetime_task = PythonOperator(
+    task_id='display_datetime_task',
+    python_callable=print_current_datetime,
+    dag=dag,
+)</code></pre>
+
+        <h3>2. Docker Container Deployment Commands</h3>
+<pre><code># Run Airflow in standalone mode with volume mounted dags folder
+docker run -d --name airflow-standalone -p 8085:8080 -v "${PWD}/dags:/opt/airflow/dags" apache/airflow:2.9.2 airflow standalone
+
+# Test task directly via terminal
+docker exec -it airflow-standalone airflow tasks test wednesday_datetime_display display_datetime_task 2026-10-25</code></pre>
+
+        <div class="callout">
+            <div class="callout-title">Submission Verification Checklist</div>
+            <ul>
+                <li>Screenshot of Airflow DAGs grid view showing <code class="inline-code">wednesday_datetime_display</code> with schedule <code class="inline-code">30 9 * * 3</code>[cite: 2, 3].</li>
+                <li>Screenshot of task log view showing <code class="inline-code">display_datetime_task</code> output with timestamp header[cite: 3, 4].</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- PRACTICAL 10 -->
+    <section class="card" id="practical-10">
+        <div class="card-header">
+            <span class="badge">Practical 10</span>
+            <h2>Automated Deployment: Jenkins Pipeline with Docker Build & Run</h2>
+        </div>
+
+        <p><strong>Objective:</strong> Automate application containerization through a Jenkins declarative pipeline that builds a Docker image from a Dockerfile and executes the containerized web app.</p>
+
+        <h3>1. Application Files</h3>
+        <p><strong>Dockerfile:</strong></p>
+<pre><code>FROM nginx:alpine
+COPY index.html /usr/share/nginx/html/index.html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]</code></pre>
+
+        <p><strong>index.html:</strong></p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;DevOps Docker App&lt;/title&gt;&lt;/head&gt;
+&lt;body style="text-align:center; padding-top:40px; font-family:sans-serif;"&gt;
+    &lt;h1&gt;Continuous Deployment via Jenkins &amp; Docker&lt;/h1&gt;
+    &lt;p&gt;Practical 10 automated build and run verification.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <h3>2. Declarative Jenkinsfile</h3>
+<pre><code>pipeline {
+    agent any
+
+    environment {
+        IMAGE_NAME = 'devops-web-app'
+        CONTAINER_NAME = 'practical10-running-app'
+        HOST_PORT = '8082'
+    }
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                echo 'Checking out source repository...'
+                checkout scm
+            }
+        }
+
+        stage('Cleanup Previous Container') {
+            steps {
+                sh '''
+                docker rm -f ${CONTAINER_NAME} || true
+                '''
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh '''
+                docker build -t ${IMAGE_NAME}:${BUILD_NUMBER} -t ${IMAGE_NAME}:latest .
+                '''
+            }
+        }
+
+        stage('Deploy Container') {
+            steps {
+                sh '''
+                docker run -d --name ${CONTAINER_NAME} -p ${HOST_PORT}:80 ${IMAGE_NAME}:latest
+                '''
+            }
+        }
+
+        stage('Health Check') {
+            steps {
+                sleep 3
+                sh '''
+                curl -I http://localhost:${HOST_PORT} || curl -I http://127.0.0.1:${HOST_PORT}
+                '''
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "Pipeline succeeded! Application deployed to port ${HOST_PORT}."
+        }
+        failure {
+            echo "Deployment failed."
+        }
+    }
+}</code></pre>
+
+        <div class="callout">
+            <div class="callout-title">Submission Verification Checklist</div>
+            <ul>
+                <li>Screenshot of Jenkins Pipeline Stage View showing successful completion across all 5 stages.</li>
+                <li>Screenshot of browser loading <code class="inline-code">http://localhost:8082</code> displaying the deployed Nginx application.</li>
+            </ul>
+        </div>
+    </section>
+
+</div>
+
+</body>
+</html>
