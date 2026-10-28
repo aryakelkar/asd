@@ -31,3 +31,44 @@ git commit -m "Initial commit on main branch"
 
 Simulate syncing updates from remote
 git pull origin main
+
+
+# DynamoDB
+  import json
+import boto3
+
+# Initialize the DynamoDB resource
+dynamodb = boto3.resource('dynamodb')
+# Select your DynamoDB table
+table = dynamodb.Table('kelkar')
+
+def lambda_handler(event, context):
+    # Extract data from the event object
+    user_id = event.get('userID')
+    name = event.get('name')
+    email = event.get('email')
+    phone = event.get('phone')
+
+    # Put the item into the DynamoDB table
+    table.put_item(
+        Item={
+            'userID': user_id,
+            'name': name,
+            'email': email,
+            'phone': phone
+        }
+    )
+
+    return {
+        'statusCode': 200,
+        'headers': {'Access-Control-Allow-Origin': '*'},
+        'body': json.dumps({'message': 'Registration data stored successfully', 'userID': user_id})
+    }
+
+
+{
+  "userId": "REG-1001",
+  "name": "Alex Johnson",
+  "email": "alex.johnson@example.com",
+  "phone": "9876543210"
+}
