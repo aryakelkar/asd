@@ -218,3 +218,20 @@ GitHub is a cloud-based platform used to store and manage source code using Git,
 Jira can be integrated with GitHub to connect development tasks with code changes. Developers can mention Jira issue IDs in commit messages and pull requests to link their code changes with the corresponding tasks.
 AWS stands for Amazon Web Services. It is a cloud computing platform that provides services such as computing power, storage, databases, networking, and application deployment.
 AWS allows developers to build, test, store, and deploy applications using cloud infrastructure.
+
+
+
+# jenkins remote git 5 min
+jenkinsfile code 
+pipeline>poll scm> H/5**** > script from scm > git > url > branch > save > build now
+
+theory:
+Jenkins is an open-source automation server used to automate the software development process. It helps developers build, test, and deploy applications automatically whenever changes are made to the source code.
+Jenkins integrates with version control systems such as Git and GitHub. It can automatically retrieve source code, build the application, execute tests, and deploy the application using a pipeline.
+Jenkins supports plugins that allow integration with various development tools, including Git, Maven, Docker, and AWS.
+Reduces manual effort.
+Detects errors early in development.
+Improves software quality.
+Speeds up the software delivery process.
+Supports integration with multiple tools.
+Provides build logs and reports for troubleshooting.
