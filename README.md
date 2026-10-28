@@ -229,9 +229,80 @@ theory:
 Jenkins is an open-source automation server used to automate the software development process. It helps developers build, test, and deploy applications automatically whenever changes are made to the source code.
 Jenkins integrates with version control systems such as Git and GitHub. It can automatically retrieve source code, build the application, execute tests, and deploy the application using a pipeline.
 Jenkins supports plugins that allow integration with various development tools, including Git, Maven, Docker, and AWS.
-Reduces manual effort.
+Reduces manual effort. 
 Detects errors early in development.
 Improves software quality.
 Speeds up the software delivery process.
 Supports integration with multiple tools.
 Provides build logs and reports for troubleshooting.
+
+
+# terraform
+ sudo apt update && sudo apt install -y awscli
+ aws --version
+ sudo dpkg --configure -a
+ sudo apt update
+ aws --version
+ sudo apt install -y awscli
+  aws --version
+  aws configure
+  aws sts get-caller-identity
+  mkdir -p ~/terraform-ec2 && cd ~/terraform-ec2
+  nano main.tf
+
+
+  terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+provider "aws" {
+  region = "eu-north-1"
+}
+data "aws_ami" "ubuntu" {
+  most_recent = true
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
+  }
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+  owners = ["099720109477"] # Canonical
+}
+resource "aws_instance" "devops_server" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t3.micro"
+  tags = {
+    Name        = "Terraform-DevOps-Instance"
+    Environment = "Lab-Practical-7"
+  }
+}
+output "instance_id" {
+  description = "EC2 Instance ID"
+  value       = aws_instance.devops_server.id
+}
+output "instance_public_ip" {
+  description = "Public IP Address"
+  value       = aws_instance.devops_server.public_ip
+}
+
+terraform init
+terraform plan
+terraform apply -auto-approve
+
+
+theory:
+Terraform is an open-source Infrastructure as Code (IaC) tool developed by HashiCorp. It allows users to create, modify, and manage cloud infrastructure using configuration files instead of manually creating resources through a cloud console.
+Terraform supports multiple cloud providers, including Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP).
+terraform init: Initializes the Terraform project.
+terraform validate: Validates configuration files.
+terraform plan: Previews proposed changes.
+terraform apply: Applies the configuration to create or modify resources.
+terraform destroy: Destroys managed infrastructure resources.
+terraform fmt: Formats configuration files.
+terraform show: Displays the current state or a saved plan.
